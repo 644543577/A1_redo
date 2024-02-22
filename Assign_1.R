@@ -12,6 +12,24 @@ largest_teams_1992 <- olympics_data %>%
   arrange(desc(athletes)) %>%
   select(country, athletes)
 
+library(readr)
+library(tidyverse)
+library(ggplot2)
+olympics_data <- read.csv("Olympics.csv")
+# a
+olympics_data_1 <- olympics_data %>%
+  mutate(total.medals = gold + silver + bronze)
+
+# b
+olympics_data_2 <- olympics_data %>%
+  group_by(country) %>%
+  summarize(total_gold = sum(gold))
+
+# c
+olympics_data_3 <- olympics_data_1 %>%
+  group_by(year) %>%
+  summarize(total_medals = sum(total.medals))
+=======
 #b:
 countries <- c("United States", "France", "Germany", "Russia", "China")
 filtered_data <- olympics_data %>%
@@ -25,3 +43,4 @@ ggplot(filtered_data, aes(x = year, y = gold, color = country, group = country))
        x = "Year",
        y = "Gold Medals") +
   theme(legend.title = element_blank())
+
