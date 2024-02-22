@@ -5,8 +5,8 @@ git_default_branch()
 library(readr)
 library(tidyverse)
 library(ggplot2)
-#a:
 olympics_data <- read_csv("Olympics.csv")
+#a:
 largest_teams_1992 <- olympics_data %>%
   filter(year == 1992) %>%
   arrange(desc(athletes)) %>%
